@@ -12,8 +12,8 @@ Este projeto cria um chatbot simples que responde perguntas frequentes sobre um 
 
 1. Clone o repositório:
     ```
-    git clone <URL_DO_REPOSITORIO>
-    cd chatbot_project
+    git clone https://github.com/NunesDevs/ChatBot.git
+    cd ChatBot
     ```
 
 2. Crie e ative um ambiente virtual:
