@@ -1,3 +1,12 @@
+function appendMessage(chatbox, speaker, message) {
+    var row = document.createElement("div");
+    var label = document.createElement("strong");
+    label.textContent = speaker + ": ";
+    row.appendChild(label);
+    row.appendChild(document.createTextNode(String(message)));
+    chatbox.appendChild(row);
+}
+
 function sendMessage() {
     var userInput = document.getElementById("user_input").value;
     if (!userInput) return;
@@ -5,7 +14,7 @@ function sendMessage() {
     var chatbox = document.getElementById("chatbox");
 
     // Exibe a pergunta do usuário no chatbox
-    chatbox.innerHTML += "<div><strong>Você:</strong> " + userInput + "</div>";
+    appendMessage(chatbox, "Você", userInput);
 
     // Limpar o campo de entrada
     document.getElementById("user_input").value = "";
@@ -21,7 +30,7 @@ function sendMessage() {
     .then(response => response.json())
     .then(data => {
         // Exibe a resposta do chatbot no chatbox
-        chatbox.innerHTML += "<div><strong>Bot:</strong> " + data.response + "</div>";
+        appendMessage(chatbox, "Bot", data.response);
 
         // Rola para o final do chat
         chatbox.scrollTop = chatbox.scrollHeight;
