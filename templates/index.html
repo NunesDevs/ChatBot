@@ -1,18 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot de Produto</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script defer src="{{ url_for('static', filename='js/chatbot.js') }}">
+</script>
+<title>Assistente de produto</title>
 </head>
-<body>
-    <div class="chat-container">
-        <div id="chatbox" class="chatbox"></div>
-        <input type="text" id="user_input" class="user-input" placeholder="Digite sua pergunta...">
-        <button onclick="sendMessage()">Enviar</button>
-    </div>
-
-    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+<body data-chat-url="{{ url_for('chat') }}">
+<main class="container">
+<header>
+<p class="eyebrow">Demonstração</p>
+<h1>Assistente de produto</h1>
+<p class="description">Tire dúvidas sobre o produto demonstrativo.</p>
+</header>
+<section class="chat-container" aria-labelledby="conversation-heading">
+<div class="chat-heading">
+<h2 id="conversation-heading">Conversa</h2>
+<button id="clear" type="button">Limpar</button>
+</div>
+<div id="chatbox" class="chatbox" role="log" aria-label="Mensagens da conversa" aria-live="polite" aria-relevant="additions" aria-busy="false">
+</div>
+<div class="suggestions" role="group" aria-label="Perguntas sugeridas">
+<button type="button" data-question="Qual é o preço?">Preço</button>
+<button type="button" data-question="O produto tem garantia?">Garantia</button>
+</div>
+<form id="chat_form" novalidate>
+<label for="user_input">Sua pergunta</label>
+<input type="text" id="user_input" maxlength="500" autocomplete="off" placeholder="Pergunte sobre o produto…" aria-describedby="chat_status" required>
+<button id="send" class="primary" type="submit">Enviar</button>
+</form>
+<p id="chat_status" class="small" data-state="ready" role="status" aria-live="polite">Enter para enviar. Até 500 caracteres.</p>
+</section>
+<p class="small">Informações demonstrativas; nenhuma compra é realizada aqui.</p>
+</main>
 </body>
 </html>
